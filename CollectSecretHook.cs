@@ -7,7 +7,7 @@ namespace UltraRogue;
 [HarmonyPatch(typeof(Bonus), "OnTriggerEnter")]
 class CollectSecretHook {
   private static BepInEx.Logging.ManualLogSource log = Plugin.Logger;
-  static void Prefix(Bonus __instance, Collider other) {
+  static void Postfix(Bonus __instance, Collider other) {
     // Copy activated boolean
     bool shadowActivated = (bool)Traverse.Create(__instance).Field("activated").GetValue();
 
