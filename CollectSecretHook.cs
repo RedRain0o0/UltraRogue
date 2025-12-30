@@ -12,7 +12,7 @@ class CollectSecretHook {
     bool shadowActivated = (bool)Traverse.Create(__instance).Field("activated").GetValue();
 
     // Check if the Collider was the player or if the orb was already active
-    if (!other.gameObject.CompareTag("Player") || shadowActivated) {
+    if (!other.gameObject.CompareTag("Player")) {
     	return;
     }
 
@@ -20,7 +20,11 @@ class CollectSecretHook {
 
     // Add health
     if (__instance.superCharge) {
-      MonoSingleton<NewMovement>.Instance.hp = 500;
+      if (MonoSingleton<NewMovement>.Instance.hp > 500) {
+        MonoSingleton<NewMovement>.Instance.hp += 200;
+      } else {
+        MonoSingleton<NewMovement>.Instance.hp = 500;
+      }
     } else {
       MonoSingleton<NewMovement>.Instance.hp += 100;
     }
