@@ -17,5 +17,10 @@ public class Plugin : BaseUnityPlugin {
 
         var harmony = new Harmony(MyPluginInfo.PLUGIN_GUID);
         harmony.PatchAll();
+        SceneManager.sceneLoaded += OnSceneLoad;
+    }
+
+    void OnSceneLoad(Scene scene, LoadSceneMode mode) {
+        UltraRogueMain.OnSceneLoad();
     }
 }
