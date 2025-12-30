@@ -12,6 +12,8 @@ public class DenyHealthHook() {
   }
 
   static void Postfix() {
-    MonoSingleton<NewMovement>.Instance.hp = health;
+    if (!UltraRogueMain.healthFromBonus) {
+      MonoSingleton<NewMovement>.Instance.hp = health;
+    }
   }
 }

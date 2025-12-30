@@ -16,7 +16,7 @@ class CollectSecretHook {
     	return;
     }
 
-    
+    UltraRogueMain.healthFromBonus = true;
 
     // Add health
     if (__instance.superCharge) {
@@ -24,5 +24,7 @@ class CollectSecretHook {
     } else {
       MonoSingleton<NewMovement>.Instance.hp += 100;
     }
+
+    UltraRogueMain.healthFromBonus = false;
   }
 }
